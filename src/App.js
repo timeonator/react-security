@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 // import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton  from "./login-button";
+import LogoutButton from "./logout-button";
 
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <div className="App">
       <header className="App-header">
           <LoginButton />
+          <LogoutButton />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
