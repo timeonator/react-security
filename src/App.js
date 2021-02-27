@@ -3,6 +3,7 @@ import './App.css';
 // import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton  from "./login-button";
 import LogoutButton from "./logout-button";
+import Profile from "./profile";
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <header className="App-header">
           <LoginButton />
           <LogoutButton />
+          <Profile />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
