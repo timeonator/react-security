@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { response } from 'express';
 import jwt from 'express-jwt';
 import cors from 'cors';
 import jwks from 'jwks-rsa';
@@ -11,84 +11,92 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(cors());
 
-app.get('/courses', (req, res) => {
-    let courses = [
-        {
-            "id": 1,
-            "title": "Building an App with ReactJS and MeteorJS",
-            "link": "https://www.lynda.com/React-js-tutorials/Building-App-React-js-MeteorJS/533228-2.html",
-            "description": "Meteor and React are a powerhouse combination. Meteor gives you a fast, easy-to-use solution for data management across clients and servers, and React gives you a way to structure your app's UI from reusable components. The combination allows you to create your dream apps: dynamic, data driven, and cross-platform."
-          },
-          {
-            "id": 2,
-            "title": "Framer for UX design",
-            "link": "https://www.lynda.com/FramerJS-tutorials/UX-Design-Tools-Framer/562923-2.html",
-            "description": "You can use Framer to create JavaScript-based app prototypes quickly and easily. UX designers, engineers, interaction designers, and more can get refreshed on UX fundamentals in this course, and then dive into navigating Framer."
-          },
-          {
-            "id": 3,
-            "title": "Migrating to TypeScript 2",
-            "link": "https://www.lynda.com/JavaScript-tutorials/Migrating-TypeScript-2/585078-2.html",
-            "description": "TypeScript is a newer Microsoft language built on JavaScript that is finding wide adoption in the Microsoft, Google, and Angular communities. Like many things JavaScript these days, TypeScript is changing rapidly as it grows."
-          },
-            {
-            "id": 4,
-            "title": "From React to React Native",
-            "link": "https://www.lynda.com/React-Native-tutorials/From-React-React-Native/577371-2.html",
-            "description": "With React Native, you can leverage your existing React knowledge to build native iOS and Android apps. In this course, explore the different components that make up a basic React Native application, and learn how to use this platform to build your own native projects."
-          },
-            {
-            "id": 5,
-            "title": "React Native Ecosystem and Workflow",
-            "link": "https://www.lynda.com/React-Native-tutorials/React-Native-Ecosystem-Workflow/560206-2.html",
-            "description": "React Native makes it easy to develop applications and then deploy them natively to multiple mobile platforms. That said, building a complete app means looking beyond React Native to the different options that can help you customize your workflow."
-          },
-            {
-            "id": 6,
-            "title": "Create a CRM mobile application with React Native",
-            "link": "https://www.lynda.com/Web-tutorials/Create-CRM-Mobile-Application-React-Native/585274-2.html",
-            "description": "You can develop a mobile CRM application using React Native. Learn how set up a project, code the login, work with Redux, add views, use CRUD operations, and more."
-          },
-            {
-            "id": 7,
-            "title": "Prototype a CRM mobile application with Framer",
-            "link": "https://www.lynda.com/FramerJS-tutorials/Prototype-Mobile-CRM-Application-Framer/587677-2.html",
-            "description": "You can create a prototype for a mobile CRM application using Framer. Learn how to create assets, build a mockup, simulate interactions with animations, prototype concepts, and more."
-          },
-            {
-            "id": 8,
-            "title": "React Ecosystems",
-            "link": "https://www.lynda.com/React-js-tutorials/React-Ecosystems/601831-2.html",
-            "description": "React is rarely used by itself. As a result, working effectively with React—especially when developing in a group—means mastering a set of tools. Some of these tools supplement React, while others establish and maintain workflows for efficient development or help React mesh with another set of web-centric tools."
-          },
-            {
-            "id": 9,
-            "title": "React: Testing and debugging",
-            "link": "https://www.lynda.com/React-js-tutorials/React-Testing-Debugging/592511-2.html",
-            "description": "Tracking down bugs in React and among the many different pieces it communicates with can be a challenge. While basic JavaScript testing and debugging tools certainly work, solutions designed specifically to work with React will save you time and effort."
-          },
-            {
-            "id": 10,
-            "title": "InVision Craft for UX design",
-            "link": "https://www.lynda.com/Craft-tutorials/InVision-Craft-UX-Design/599634-2.html",
-            "description": "InVision Craft is suite of plugins that equip designers with tools that simplify some of the more tedious tasks in their UX design workflow and, in turn, speed up the entire process."
-          },
-            {
-            "id": 11,
-            "title": "InVision for UX Design",
-            "link": "https://www.lynda.com/InVision-tutorials/InVision-UX-Design/599633-2.html",
-            "description": "InVision is a platform that provides UX designers with a set of powerful tools for creating interactive prototypes, collaborating with teammates, and managing their UX design workflow."
-          },
-            {
-            "id": 12,
-            "title": "GraphQL: Data fetching with Relay",
-            "link": "https://www.lynda.com/GraphQL-tutorials/GraphQL-Data-Fetching-Relay/595829-2.html",
-            "description": "Want to build more efficient, data-driven React.js applications? Streamline data retrieval with GraphQL and Relay. You can get exactly the data you need—nothing more, nothing less—and predictable results every time."
-          }
-    ]
-    res.json(courses);
-})
-
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+app.get('/content',(req,res)=>{
+    let content = [
+        {
+        "id": 1,
+        "first_name": "Byram",
+        "last_name": "Ickovici",
+        "email": "bickovici0@so-net.ne.jp",
+        "gender": "Male",
+        "ip_address": "197.178.1.242",
+        "content": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus."
+      }, {
+        "id": 2,
+        "first_name": "Constantine",
+        "last_name": "Nicklin",
+        "email": "cnicklin1@mayoclinic.com",
+        "gender": "Bigender",
+        "ip_address": "236.183.125.199",
+        "content": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris."
+      }, {
+        "id": 3,
+        "first_name": "Alice",
+        "last_name": "Gilbane",
+        "email": "agilbane2@dell.com",
+        "gender": "Genderqueer",
+        "ip_address": "255.170.215.194",
+        "content": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis."
+      }, {
+        "id": 4,
+        "first_name": "Lucas",
+        "last_name": "Atter",
+        "email": "latter3@cnbc.com",
+        "gender": "Polygender",
+        "ip_address": "155.125.223.44",
+        "content": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit."
+      }, {
+        "id": 5,
+        "first_name": "Leonora",
+        "last_name": "Godfroy",
+        "email": "lgodfroy4@umn.edu",
+        "gender": "Genderfluid",
+        "ip_address": "16.76.97.118",
+        "content": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem."
+      }, {
+        "id": 6,
+        "first_name": "Judith",
+        "last_name": "Kilgannon",
+        "email": "jkilgannon5@biglobe.ne.jp",
+        "gender": "Genderfluid",
+        "ip_address": "196.10.148.248",
+        "content": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl."
+      }, {
+        "id": 7,
+        "first_name": "Hilliary",
+        "last_name": "Barrowclough",
+        "email": "hbarrowclough6@mtv.com",
+        "gender": "Genderqueer",
+        "ip_address": "227.52.26.132",
+        "content": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque."
+      }, {
+        "id": 8,
+        "first_name": "Elsworth",
+        "last_name": "Welbeck",
+        "email": "ewelbeck7@aboutads.info",
+        "gender": "Genderqueer",
+        "ip_address": "102.153.244.17",
+        "content": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+      }, {
+        "id": 9,
+        "first_name": "Bibby",
+        "last_name": "Heimes",
+        "email": "bheimes8@sohu.com",
+        "gender": "Genderqueer",
+        "ip_address": "20.112.118.67",
+        "content": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem."
+      }, {
+        "id": 10,
+        "first_name": "Hershel",
+        "last_name": "Dagnall",
+        "email": "hdagnall9@arstechnica.com",
+        "gender": "Genderqueer",
+        "ip_address": "23.149.158.35",
+        "content": "In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus."
+      }];
+      res.json(content);
+})
