@@ -5,16 +5,17 @@ import './App.css';
 import LoginButton  from "./login-button";
 import LogoutButton from "./logout-button";
 import Profile from "./profile";
+import Navigation from './components/navigation'
 
 
 function App() {
-  return (
+    return (
     <div className="App">
-      <header className="App-header">
-          <LoginButton />
-          <LogoutButton />
-          <Profile />
-      </header>
+        <header>
+            <Navigation />            
+        </header>
+
+        <Profile />
     </div>
   );
 }
