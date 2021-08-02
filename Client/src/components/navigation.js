@@ -18,23 +18,22 @@ const Navigation = (props) => {
             </Nav>
         )}
         <h3 className="text-muted">Secure</h3>
-      {isAuthenticated && (
-        <Nav className="nav nav-pills pull-right">
-          <Nav.Link href="/home">Home</Nav.Link>
-          <Nav.Link href="/about">About</Nav.Link>
-          <Nav.Link href="/contact">Contact</Nav.Link>
-          <button onClick={() => logout()}>Logout</button>
-        </Nav>
-      )}
-                <Switch>
+        {isAuthenticated && (
+            <Nav className="nav nav-pills pull-right">
+                <Nav.Link href="/home">Home</Nav.Link>
+                <Nav.Link href="/about">About</Nav.Link>
+                <Nav.Link href="/contact">Contact</Nav.Link>
+            <button onClick={() => logout()}>Logout</button>
+            </Nav>
+        )}
+        <Switch>
             <Route path="/contact" component={Contact}/>
             <Route path="/about" component={About}/>
             <Route path="/home" component={Home}/>
             <Route exact path="/" component={About}/>
-          </Switch>
+        </Switch>
     </div>
     </Router>
-
   );
 }
 export default Navigation; 
