@@ -1,4 +1,4 @@
-# Auth0 demonstartion App
+# Auth0 demonstration App
 
 ## Run
      npm install
