@@ -9,24 +9,22 @@ import Profile from './profile'
 
 const Navigation = (props) => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+
   return (
     <Router>
     <div className="header">
-        {!isAuthenticated && (
             <Nav className="nav nav-pills pull-right">
                 <Nav.Link href="/about">About</Nav.Link>
-                <button onClick={() => loginWithRedirect({})}>Log in</button>
+                {!isAuthenticated && (
+                    <button onClick={() => loginWithRedirect({})}>Log in</button>
+                )}
+                {isAuthenticated && (<>
+                    <Nav.Link href="/home">Home</Nav.Link>
+                    <Nav.Link href="/profile">Profile</Nav.Link>
+                    <button onClick={() => logout()}>Logout</button>
+                </>)}
             </Nav>
-        )}
-        <h3 className="text-muted">Secure</h3>
-        {isAuthenticated && (
-            <Nav className="nav nav-pills pull-right">
-                <Nav.Link href="/home">Home</Nav.Link>
-                <Nav.Link href="/about">About</Nav.Link>
-                <Nav.Link href="/profile">Profile</Nav.Link>
-            <button onClick={() => logout()}>Logout</button>
-            </Nav>
-        )}
+
         <Switch>
             <Route path="/contact" component={Contact}/>
             <Route path="/about" component={About}/>
