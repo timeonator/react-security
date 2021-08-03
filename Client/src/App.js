@@ -1,17 +1,21 @@
 import React from 'react'
-import logo from './logo.svg';
 import './App.css';
-// import { useAuth0 } from "@auth0/auth0-react";
 import Navigation from './components/navigation'
+import { useAuth0 } from './react-auth0-spa';
 
 function App() {
+    const { loading } = useAuth0();
+
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+  
     return (
     <React.StrictMode>
       <div className="App">
         <header>
-         
+        <Navigation />         
         </header>
-        <Navigation />
     </div>          
     </React.StrictMode>
   );

@@ -5,6 +5,7 @@ import { useAuth0 } from '../react-auth0-spa';
 import About from './about'
 import Contact from './contact'
 import Home from './home'
+import Profile from './profile'
 
 const Navigation = (props) => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
@@ -22,7 +23,7 @@ const Navigation = (props) => {
             <Nav className="nav nav-pills pull-right">
                 <Nav.Link href="/home">Home</Nav.Link>
                 <Nav.Link href="/about">About</Nav.Link>
-                <Nav.Link href="/contact">Contact</Nav.Link>
+                <Nav.Link href="/profile">Profile</Nav.Link>
             <button onClick={() => logout()}>Logout</button>
             </Nav>
         )}
@@ -30,6 +31,7 @@ const Navigation = (props) => {
             <Route path="/contact" component={Contact}/>
             <Route path="/about" component={About}/>
             <Route path="/home" component={Home}/>
+            <Route path="/profile" component={Profile}/>
             <Route exact path="/" component={About}/>
         </Switch>
     </div>
