@@ -1,7 +1,7 @@
 import React from 'react';
 import {Nav} from 'react-bootstrap'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from '../react-auth0-spa';
 import About from './about'
 import Contact from './contact'
 import Home from './home'
